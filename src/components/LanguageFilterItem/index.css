@@ -1,0 +1,23 @@
+.tab-button {
+  background-color: transparent;
+  border: 0;
+  font-size: 20px;
+  font-family: 'roboto';
+  font-weight: bold;
+  padding: 10px;
+}
+
+li {
+  list-style: none;
+}
+
+.tab-item {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.active {
+  border: 2px solid #0284c7;
+  color: #0284c7;
+  border-radius: 15px;
+}

@@ -1,0 +1,19 @@
+/* Write your CSS here */
+.tab-items-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.bg-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.repositories-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
