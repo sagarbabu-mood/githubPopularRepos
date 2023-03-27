@@ -18,7 +18,6 @@ const languageFiltersData = [
 class GithubPopularRepos extends Component {
   state = {
     activeTabId: languageFiltersData[0].id,
-    activeLanguage: languageFiltersData[0].language,
     isLoading: true,
     popularReposList: [],
   }
@@ -28,11 +27,11 @@ class GithubPopularRepos extends Component {
   }
 
   getPopularRepos = async () => {
-    const {activeLanguage} = this.state
-    const url = `https://apis.ccbp.in/popular-repos?language=${activeLanguage}`
+    const {activeTabId} = this.state
+    const url = `https://apis.ccbp.in/popular-repos?language=${activeTabId}`
+    console.log(url)
     const response = await fetch(url)
-    console.log(url, response)
-    if (response.ok === true) {
+    if (response.ok) {
       const data = await response.json()
       const formattedData = data.popular_repos.map(eachRepo => ({
         avatarUrl: eachRepo.avatar_url,
@@ -47,14 +46,7 @@ class GithubPopularRepos extends Component {
   }
 
   updateActiveTabId = id => {
-    const activeTab = languageFiltersData.filter(
-      eachLanguage => eachLanguage.id === id,
-    )
-
-    this.setState(
-      {activeTabId: id, activeLanguage: activeTab[0].language, isLoading: true},
-      this.getPopularRepos,
-    )
+    this.setState({activeTabId: id, isLoading: true}, this.getPopularRepos)
   }
 
   render() {
